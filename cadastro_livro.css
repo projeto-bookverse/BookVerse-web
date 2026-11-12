@@ -1,0 +1,82 @@
+/* Usa as variáveis do :root do style.css:
+   --navy, --navy-dark, --paper, --muted, --line, --panel, --white */
+
+
+/* Página */
+.cad-page { max-width: 1280px; margin: 0 auto; padding: 58px 42px 82px; }
+.cad-intro { padding: 0 0 40px; }
+.cad-intro h1 { margin: 22px 0 14px; font: 500 clamp(38px, 5vw, 56px)/1.08 "Playfair Display", Georgia, serif; }
+.cad-intro p { max-width: 560px; margin: 0; color: var(--muted); font-size: 16px; line-height: 1.7; }
+.cad-workspace { display: grid; grid-template-columns: minmax(320px, 1fr) minmax(0, 1fr); align-items: start; gap: 42px; }
+
+/* Formulário */
+.cad-form { padding: 28px; border: 1px solid #e7e5df; border-radius: 14px; background: var(--white); box-shadow: 0 9px 28px #20394c0a; }
+.field { margin-bottom: 20px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.field-label { display: block; margin: 0 0 8px; color: var(--navy); font-size: 12px; font-weight: 700; }
+.cad-form input[type="text"], .cad-form select, .cad-form textarea {
+  width: 100%; min-height: 44px; padding: 10px 12px; box-sizing: border-box;
+  border: 1px solid #deded8; border-radius: 7px; background: var(--white); color: var(--navy); font: 13px "DM Sans", Arial, sans-serif;
+}
+.cad-form textarea { resize: vertical; line-height: 1.6; }
+.cad-form textarea::placeholder, .cad-form input::placeholder { color: #a0a5a2; }
+.cad-form input:focus, .cad-form select:focus, .cad-form textarea:focus,
+.cover-drop:focus-within { outline: 2px solid #91a9b5; outline-offset: 1px; }
+.field.invalid input, .field.invalid select { border-color: #a13d34; }
+.field-error { margin: 6px 0 0; color: #a13d34; font-size: 11px; }
+.field-error:empty { display: none; }
+.form-meta { display: flex; justify-content: space-between; margin-top: 6px; color: #929a9c; font-size: 10px; }
+
+/* Capa */
+.cover-drop { display: flex; min-height: 150px; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 14px; border: 1px dashed #c9cfcf; border-radius: 10px; background: var(--paper); color: var(--muted); cursor: pointer; font-size: 12px; text-align: center; }
+.cover-drop:hover { background: var(--panel); }
+.cover-drop img { max-height: 180px; border-radius: 5px; box-shadow: 0 4px 14px #20394c26; }
+.cover-drop img[hidden] { display: none; }
+.link-button { margin-top: 8px; padding: 0; border: 0; background: transparent; color: #a14b43; cursor: pointer; font: 600 11px "DM Sans", Arial, sans-serif; }
+.link-button:hover { text-decoration: underline; }
+
+/* Ações */
+.form-actions { display: flex; align-items: center; gap: 12px; margin-top: 8px; }
+.cad-form .button { flex: 1; min-height: 46px; justify-content: center; }
+button.button-primary { border: 0; font-family: inherit; cursor: pointer; }
+.cancel-button { min-height: 42px; padding: 0 10px; border: 0; background: transparent; color: #65757b; cursor: pointer; font: 600 12px "DM Sans", Arial, sans-serif; }
+.form-message { margin: 13px 0 0; color: #667780; font-size: 12px; line-height: 1.5; }
+.form-message.erro { color: #a13d34; }
+.form-message.ok { color: #2f6b4a; }
+
+/* Lista */
+.list-heading h2 { margin: 0 0 18px; font: 500 27px/1.2 "Playfair Display", Georgia, serif; }
+.list-heading h2 span { margin-left: 6px; padding: 2px 9px; border-radius: 20px; background: var(--panel); color: var(--muted); font: 600 12px "DM Sans", Arial, sans-serif; vertical-align: middle; }
+.list-empty { padding: 28px 20px; border: 1px dashed #d8dcd8; border-radius: 10px; color: #7d888b; text-align: center; font-size: 13px; }
+.list-empty[hidden] { display: none; }
+.book-list { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; }
+.book-item { display: flex; gap: 16px; padding: 16px; border: 1px solid #e9e7e1; border-radius: 11px; background: var(--white); box-shadow: 0 6px 20px #20394c08; }
+.book-cover { flex: 0 0 64px; height: 92px; border-radius: 5px; background: var(--panel); object-fit: cover; }
+.book-cover-vazia { display: grid; place-items: center; color: #9aa6aa; font: 500 22px "Playfair Display", Georgia, serif; }
+.book-info { min-width: 0; flex: 1; }
+.book-info h3 { margin: 0 0 4px; font: 500 18px/1.25 "Playfair Display", Georgia, serif; overflow-wrap: anywhere; }
+.book-author { margin: 0; color: #485960; font-size: 13px; }
+.book-meta { margin: 6px 0 0; color: #8b9394; font-size: 11px; }
+.book-desc { margin: 8px 0 0; color: #5e717a; font-size: 12px; line-height: 1.6; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.book-delete { align-self: flex-start; padding: 4px 0; border: 0; background: transparent; color: #a14b43; cursor: pointer; font: 600 11px "DM Sans", Arial, sans-serif; }
+.book-delete:hover { text-decoration: underline; }
+
+.visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+@media (max-width: 900px) {
+  .cad-page { padding: 45px 26px 65px; }
+  .cad-workspace { grid-template-columns: 1fr; gap: 34px; }
+}
+@media (max-width: 680px) {
+  .cad-page { padding: 35px 15px 52px; }
+  .cad-form { padding: 21px 18px; }
+  .field-row { grid-template-columns: 1fr; gap: 0; }
+}
+
+/* Edição */
+.book-actions { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; align-self: flex-start; }
+.book-edit { padding: 4px 0; border: 0; background: transparent; color: #3d6a8a; cursor: pointer; font: 600 11px "DM Sans", Arial, sans-serif; }
+.book-edit:hover { text-decoration: underline; }
+.book-item.editando { border-color: #91a9b5; box-shadow: 0 0 0 2px #91a9b533; }
+
+.cad-form .button { min-width: 0; }

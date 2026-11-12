@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="auth-pending">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="BookVerse — descubra livros, registre suas leituras e encontre pessoas que amam histórias.">
+  <title>BookVerse</title>
+  <script src="acesso.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="reviews.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="BookVerse - página inicial">
+      <svg class="brand-icon" viewBox="0 0 48 42" aria-hidden="true">
+        <path d="M3 5.5C10.4 2.1 17.4 3 23 7v31c-5.6-4-12.6-4.9-20-1.5V5.5Z"/>
+        <path d="M45 5.5C37.6 2.1 30.6 3 25 7v31c5.6-4 12.6-4.9 20-1.5V5.5Z"/>
+      </svg>
+      <span>bookverse</span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="main-nav" id="mainNav">
+      <a class="active" href="#inicio">Descobrir</a>
+      <a href="#livros">Livros</a>
+      <a href="reviews.html">Resenhas</a>
+      <a href="#listas">Listas</a>
+      <a href="#comunidade">Comunidade</a>
+    </nav>
+
+    <div class="header-actions">
+      <label class="search-box">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg>
+        <input id="siteSearch" type="search" placeholder="Livros, pessoas e listas" aria-label="Buscar livros, pessoas e listas">
+      </label>
+      <a class="login-link" href="login.html">Entrar</a>
+      <a class="button button-small" href="cadastro.html">Criar conta</a>
+    </div>
+  </header>
+
+  <main id="inicio">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span></span> PARA QUEM VIVE ENTRE PÁGINAS</div>
+        <h1>Toda leitura<br class="desktop-break"> merece uma boa<br class="desktop-break"> conversa.</h1>
+        <p class="hero-description">Descubra seu próximo livro favorito, registre suas leituras e encontre pessoas que sentem as histórias como você.</p>
+        <div class="hero-buttons">
+          <a class="button button-primary" href="cadastro.html">Faça parte do Bookverse <span class="arrow">→</span></a>
+          <a class="button button-secondary" href="#livros">Explorar livros</a>
+        </div>
+        <div class="social-proof">
+          <div class="avatars" aria-hidden="true">
+            <span class="avatar avatar-one">M</span>
+            <span class="avatar avatar-two">J</span>
+            <span class="avatar avatar-three">A</span>
+          </div>
+          <span>Boas histórias. Novas conexões. Seu lugar é aqui.</span>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-label="Destaque com livros para descobrir e avaliar">
+        <div class="art-eyebrow"><span class="sparkle">✣</span> UM UNIVERSO DE HISTÓRIAS</div>
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="books">
+          <article class="book book-left">
+            <div class="book-author">J.K. ROWLING</div>
+            <div class="book-title">Harry Potter<br>e a Pedra<br>Filosofal</div>
+            <div class="book-picture picture-left"><span>✦</span></div>
+          </article>
+          <article class="book book-center">
+            <div class="book-author">ANTOINE DE SAINT-EXUPÉRY</div>
+            <div class="book-title">O Pequeno<br>Príncipe</div>
+            <div class="book-picture picture-center"><span>☼</span></div>
+          </article>
+          <article class="book book-right">
+            <div class="book-author">JOHN GREEN</div>
+            <div class="book-title">A Culpa é<br>das Estrelas</div>
+            <div class="book-picture picture-right"><span>❀</span></div>
+          </article>
+        </div>
+        <div class="review-card">
+          <p class="review-card-label">SEU PRÓXIMO CAPÍTULO</p>
+          <p>Descubra histórias e compartilhe sua opinião com a comunidade.</p>
+          <a href="reviews.html">Escreva sua avaliação <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="landing-reviews" id="avaliacoes" aria-labelledby="landingReviewsTitle">
+      <div class="landing-reviews-heading">
+        <div>
+          <p class="eyebrow">RESENHAS DA COMUNIDADE</p>
+          <h2 id="landingReviewsTitle">Leituras Compartilhadas</h2>
+          <p>Descubra avaliações e resenhas da comunidade BookVerse.</p>
+        </div>
+        <a class="landing-reviews-link" href="reviews.html">Escrever sua resenha <span aria-hidden="true">→</span></a>
+      </div>
+      <div id="communityRealReviews" class="landing-reviews-grid" aria-label="Leituras compartilhadas pela comunidade"></div>
+    </section>
+
+    <section class="benefits" id="comunidade" aria-label="Benefícios do BookVerse">
+      <div><span class="benefit-icon">♧</span> Guarde cada capítulo da sua vida</div>
+      <div><span class="benefit-icon">☆</span> Avalie com seu próprio olhar</div>
+      <div><span class="benefit-icon">▢</span> Encontre sua próxima conversa</div>
+    </section>
+
+    <section class="below-fold" id="livros">
+      <p class="eyebrow">SEU PRÓXIMO CAPÍTULO COMEÇA AQUI</p>
+      <h2>Histórias para descobrir.<br>Leituras para compartilhar.</h2>
+      <p>Explore livros, crie suas listas e compartilhe suas impressões com a comunidade.</p>
+      <div class="below-links" id="listas">
+        <a href="#livros">Explorar livros</a>
+        <a href="cadastro.html">Criar minha conta</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span class="footer-brand">bookverse</span>
+    <a class="footer-admin-link" id="adminBooksLink" href="cadastro_livro.html">Livros</a>
+    <span>Boas histórias aproximam pessoas.</span>
+  </footer>
+  <dialog id="reviewDetailDialog" class="review-detail-dialog" aria-labelledby="reviewDetailTitle">
+    <div class="review-detail-shell">
+      <button class="review-detail-close" type="button" aria-label="Fechar detalhes">×</button>
+      <div id="reviewDetailContent"></div>
+    </div>
+  </dialog>
+  <script src="script.js"></script>
+  <script src="reviews.js"></script>
+</body>
+</html>

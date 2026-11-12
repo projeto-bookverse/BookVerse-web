@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastrar livro | BookVerse</title>
+  <script src="acesso.js"></script>
+  <script>
+    const adminBooksAccessKey = "bookverse:admin-books-access";
+    const hasTemporaryAccess = window.sessionStorage.getItem(adminBooksAccessKey) === "true";
+    window.sessionStorage.removeItem(adminBooksAccessKey);
+
+    function showAdminBooksPage() {
+      document.addEventListener("DOMContentLoaded", () => {
+        document.body.hidden = false;
+      });
+    }
+
+    if (window.bookVerseAuthenticated) {
+      if (hasTemporaryAccess) {
+        showAdminBooksPage();
+      } else {
+        window.alert("Esta página é exclusiva para administradores do site.");
+        const password = window.prompt("Digite a senha de administrador:");
+
+        if (password === "admin") {
+          showAdminBooksPage();
+        } else {
+          window.alert("Senha incorreta. Acesso não autorizado.");
+          window.location.replace("index.html");
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="cadastro_livro.css">
+</head>
+<body hidden>
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="BookVerse - página inicial">
+      <svg class="brand-icon" viewBox="0 0 48 42" aria-hidden="true">
+        <path d="M3 5.5C10.4 2.1 17.4 3 23 7v31c-5.6-4-12.6-4.9-20-1.5V5.5Z"/>
+        <path d="M45 5.5C37.6 2.1 30.6 3 25 7v31c5.6-4 12.6-4.9 20-1.5V5.5Z"/>
+      </svg>
+      <span>bookverse</span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html#inicio">Descobrir</a>
+      <a class="active" href="index.html#livros">Livros</a>
+      <a href="reviews.html">Resenhas</a>
+      <a href="index.html#listas">Listas</a>
+      <a href="index.html#comunidade">Comunidade</a>
+    </nav>
+
+    <div class="header-actions">
+      <label class="search-box">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg>
+        <input id="siteSearch" type="search" placeholder="Livros, pessoas e listas" aria-label="Buscar livros, pessoas e listas">
+      </label>
+      <a class="login-link" href="login.html">Entrar</a>
+      <a class="button button-small" href="cadastro.html">Criar conta</a>
+    </div>
+  </header>
+
+  <main class="cad-page">
+    <section class="cad-intro">
+      <div class="eyebrow"><span></span> CATÁLOGO</div>
+      <h1>Cadastre um livro</h1>
+      <p>Preencha os dados abaixo para adicionar um título ao catálogo do BookVerse.</p>
+    </section>
+
+    <div class="cad-workspace">
+      <form id="form-livro" class="cad-form" novalidate>
+        <div class="field">
+          <label class="field-label" for="titulo">Título</label>
+          <input id="titulo" name="titulo" type="text" maxlength="120" required autocomplete="off">
+          <p class="field-error" data-erro="titulo"></p>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="autor">Autor</label>
+          <input id="autor" name="autor" type="text" maxlength="80" required autocomplete="off">
+          <p class="field-error" data-erro="autor"></p>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label class="field-label" for="genero">Gênero</label>
+            <select id="genero" name="genero" required>
+              <option value="">Selecione</option>
+              <option>Romance</option>
+              <option>Fantasia</option>
+              <option>Ficção científica</option>
+              <option>Suspense</option>
+              <option>Terror</option>
+              <option>Biografia</option>
+              <option>História</option>
+              <option>Tecnologia</option>
+              <option>Autoajuda</option>
+              <option>Outro</option>
+            </select>
+            <p class="field-error" data-erro="genero"></p>
+          </div>
+
+          <div class="field">
+            <label class="field-label" for="isbn">ISBN</label>
+            <input id="isbn" name="isbn" type="text" inputmode="numeric" placeholder="978-85-359-0277-5" maxlength="17" required autocomplete="off">
+            <p class="field-error" data-erro="isbn"></p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="descricao">Descrição</label>
+          <textarea id="descricao" name="descricao" maxlength="500" rows="5" placeholder="Sobre o que é o livro?"></textarea>
+          <div class="form-meta"><span>Opcional</span><span id="contador">0/500</span></div>
+        </div>
+
+        <div class="field">
+          <span class="field-label" id="rotulo-capa">Capa</span>
+          <label class="cover-drop" for="capa">
+            <img id="capa-preview" alt="Pré-visualização da capa" hidden>
+            <span id="capa-texto">Escolher imagem (JPG ou PNG, até 3 MB)</span>
+          </label>
+          <input id="capa" name="capa" type="file" accept="image/png,image/jpeg,image/webp" class="visually-hidden" aria-labelledby="rotulo-capa">
+          <button type="button" id="remover-capa" class="link-button" hidden>Remover capa</button>
+          <p class="field-error" data-erro="capa"></p>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" id="btn-salvar" class="button button-primary">Salvar livro</button>
+          <button type="reset" id="btn-limpar" class="cancel-button">Limpar</button>
+        </div>
+        <p id="mensagem" class="form-message" role="status"></p>
+      </form>
+
+      <section class="cad-list" aria-labelledby="titulo-lista">
+        <div class="list-heading">
+          <h2 id="titulo-lista">Livros cadastrados <span id="total">0</span></h2>
+        </div>
+        <p id="lista-vazia" class="list-empty">Nenhum livro ainda. Cadastre o primeiro ao lado.</p>
+        <ul id="lista-livros" class="book-list"></ul>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <span class="footer-brand">bookverse</span>
+    <span>Boas histórias aproximam pessoas.</span>
+  </footer>
+
+  <script src="cadastro_livro.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

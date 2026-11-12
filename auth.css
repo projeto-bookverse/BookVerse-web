@@ -1,0 +1,56 @@
+/* Telas de acesso: login, criar conta e esqueci minha senha.
+   Cabeçalho, rodapé, .eyebrow e .button vêm do style.css (mesma base da página inicial).
+   Variáveis usadas: --navy, --navy-dark, --paper, --muted, --line, --panel, --white */
+
+.auth-page { display: grid; grid-template-columns: minmax(0, 1fr) minmax(340px, 440px); align-items: center; gap: 80px; max-width: 1180px; min-height: calc(100vh - 170px); margin: 0 auto; padding: 64px 42px 88px; box-sizing: border-box; }
+.auth-intro h1 { margin: 22px 0 18px; color: var(--navy); font: 500 clamp(40px, 5vw, 62px)/1.08 "Playfair Display", Georgia, serif; }
+.auth-intro p { max-width: 470px; margin: 0; color: var(--muted); font-size: 17px; line-height: 1.7; }
+
+/* Card */
+.auth-card { padding: 34px 30px; box-sizing: border-box; border: 1px solid #e7e5df; border-radius: 14px; background: var(--white); box-shadow: 0 9px 28px #20394c0a; }
+.auth-card h2 { margin: 0 0 24px; color: var(--navy); font: 500 27px/1.2 "Playfair Display", Georgia, serif; }
+.auth-card .button { display: flex; width: 100%; box-sizing: border-box; justify-content: center; }
+button.button-primary { border: 0; font-family: inherit; cursor: pointer; }
+button.button-primary:disabled { opacity: .65; cursor: wait; }
+
+/* Campos */
+.field { margin-bottom: 20px; }
+.field-label { display: block; margin: 0 0 8px; color: var(--navy); font-size: 12px; font-weight: 700; }
+.label-row { display: flex; align-items: baseline; justify-content: space-between; }
+.link-small { color: #3d6a8a; font-size: 12px; font-weight: 600; text-decoration: none; }
+.link-small:hover { text-decoration: underline; }
+.auth-card input[type="email"], .auth-card input[type="password"], .auth-card input[type="text"] {
+  width: 100%; min-height: 44px; padding: 10px 12px; box-sizing: border-box;
+  border: 1px solid #deded8; border-radius: 7px; background: var(--white); color: var(--navy); font: 14px "DM Sans", Arial, sans-serif;
+}
+.auth-card input[readonly] { background: var(--paper); color: var(--muted); }
+.auth-card input::placeholder { color: #a0a5a2; }
+.auth-card input:focus, .toggle-password:focus-visible, .link-small:focus-visible { outline: 2px solid #91a9b5; outline-offset: 2px; }
+.field.invalid input { border-color: #a13d34; }
+.field-hint { margin: 6px 0 0; color: #929a9c; font-size: 11px; }
+.field-error { margin: 6px 0 0; color: #a13d34; font-size: 11px; }
+.field-error:empty { display: none; }
+.password-wrap { position: relative; }
+.password-wrap input { padding-right: 78px !important; }
+.toggle-password { position: absolute; top: 50%; right: 8px; transform: translateY(-50%); padding: 6px 8px; border: 0; border-radius: 5px; background: transparent; color: #65757b; cursor: pointer; font: 600 11px "DM Sans", Arial, sans-serif; }
+.toggle-password:hover { background: var(--panel); }
+[hidden] { display: none !important; }
+
+/* Mensagens e divisor */
+.form-message { min-height: 16px; margin: 12px 0 0; color: #667780; font-size: 12px; line-height: 1.5; text-align: center; }
+.form-message.erro { color: #a13d34; }
+.form-message.ok { color: #2f6b4a; }
+.auth-divider { display: flex; align-items: center; gap: 12px; margin: 22px 0 16px; color: #8b9394; font-size: 12px; }
+.auth-divider::before, .auth-divider::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+@media (max-width: 900px) {
+  .auth-page { grid-template-columns: 1fr; gap: 36px; min-height: 0; padding: 45px 26px 65px; }
+  .auth-card { max-width: 480px; width: 100%; }
+}
+@media (max-width: 680px) {
+  .auth-page { padding: 35px 15px 52px; }
+  .auth-intro p { font-size: 15px; }
+  .auth-card { padding: 26px 20px; }
+}
+
+.auth-card .button { min-width: 0; }

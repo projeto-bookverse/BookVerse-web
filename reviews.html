@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="auth-pending">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Leia e compartilhe resenhas de livros na comunidade BookVerse.">
+  <title>BookVerse | Resenhas e avaliações</title>
+  <script src="acesso.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="reviews.css">
+</head>
+<body>
+  <header class="site-header reviews-header">
+    <a class="brand" href="index.html" aria-label="BookVerse - página inicial">
+      <svg class="brand-icon" viewBox="0 0 48 42" aria-hidden="true">
+        <path d="M3 5.5C10.4 2.1 17.4 3 23 7v31c-5.6-4-12.6-4.9-20-1.5V5.5Z"/>
+        <path d="M45 5.5C37.6 2.1 30.6 3 25 7v31c5.6-4 12.6-4.9 20-1.5V5.5Z"/>
+      </svg>
+      <span>bookverse</span>
+    </a>
+    <nav class="reviews-nav" aria-label="Navegação principal">
+      <a href="index.html">Descobrir</a>
+      <a href="index.html#livros">Livros</a>
+      <a class="active" href="reviews.html" aria-current="page">Resenhas</a>
+    </nav>
+    <a class="back-link" href="index.html">Voltar ao início <span aria-hidden="true">→</span></a>
+  </header>
+
+  <main class="reviews-page">
+    <section class="reviews-intro">
+      <div>
+        <p class="eyebrow"><span></span> CLUBE DE LEITURA BOOKVERSE</p>
+        <h1>Uma boa história<br>continua na conversa.</h1>
+        <p class="intro-copy">Descubra o que outros leitores sentiram, avalie suas leituras e compartilhe sua própria perspectiva.</p>
+      </div>
+      <div class="intro-note" aria-hidden="true">
+        <span class="note-stars">★★★★★</span>
+        <p>Leituras diferentes.<br>Conversas que ficam.</p>
+        <span class="note-mark">“</span>
+      </div>
+    </section>
+
+    <section class="reviews-showcase" aria-labelledby="feedTitle">
+      <div class="feed-heading">
+        <div>
+          <p class="section-kicker">VOZES DA COMUNIDADE</p>
+          <h2 id="feedTitle">Vitrine de Avaliações</h2>
+          <p class="feed-intro">Descubra o que outros leitores estão achando de suas leituras.</p>
+        </div>
+        <button class="refresh-button" id="refreshReviews" type="button" aria-label="Atualizar avaliações" title="Atualizar avaliações">↻</button>
+      </div>
+      <div class="feed-filters">
+        <label class="filter-search">
+          <span>Livro</span>
+          <input id="reviewBookSearch" type="search" placeholder="Pesquisar título do livro" autocomplete="off">
+        </label>
+        <label class="filter-search">
+          <span>Leitor</span>
+          <input id="reviewAuthorSearch" type="search" placeholder="Pesquisar nome do leitor" autocomplete="off">
+        </label>
+        <label>
+          <span>Nota</span>
+          <select id="ratingFilter">
+            <option value="">Todas</option>
+            <option value="5">5 estrelas</option>
+            <option value="4">4 estrelas</option>
+            <option value="3">3 estrelas</option>
+            <option value="2">2 estrelas</option>
+            <option value="1">1 estrela</option>
+          </select>
+        </label>
+        <label>
+          <span>Ordenar</span>
+          <select id="reviewSort">
+            <option value="newest">Mais recentes</option>
+            <option value="oldest">Mais antigas</option>
+          </select>
+        </label>
+        <label>
+          <span>Mostrar</span>
+          <select id="reviewFilter">
+            <option value="all">Todas</option>
+            <option value="mine">Minhas avaliações</option>
+          </select>
+        </label>
+        <label>
+          <span>Livro do catálogo</span>
+          <select id="bookFilter">
+            <option value="">Todos os livros</option>
+          </select>
+        </label>
+      </div>
+      <p id="bookRatingSummary" class="book-rating-summary" role="status" aria-live="polite"></p>
+      <div id="reviewsStatus" class="reviews-status" role="status" aria-live="polite"></div>
+      <div id="reviewsList" class="reviews-list"></div>
+      <button id="loadMoreReviews" class="load-more-reviews" type="button" hidden>Carregar mais avaliações</button>
+    </section>
+
+    <section class="write-review-section" aria-labelledby="writeReviewHeading">
+      <div class="write-review-intro">
+        <p class="section-kicker">SUA LEITURA, SUAS PALAVRAS</p>
+        <h2 id="writeReviewHeading">Escrever uma avaliação</h2>
+        <p>Compartilhe sua opinião e ajude outros leitores a encontrar sua próxima história.</p>
+      </div>
+      <aside class="review-composer">
+        <div class="composer-heading">
+          <span class="composer-icon" aria-hidden="true">✎</span>
+          <div>
+            <p class="section-kicker">PUBLICAÇÃO DA COMUNIDADE</p>
+            <h3 id="formTitle">Nova avaliação</h3>
+          </div>
+        </div>
+        <form id="reviewForm">
+          <label class="field-label" for="bookSearch">Escolha um livro do catálogo</label>
+          <input id="bookSearch" type="search" placeholder="Pesquisar por título ou autor" autocomplete="off" aria-controls="bookSearchResults">
+          <div id="bookSearchResults" class="book-search-results" role="listbox" aria-label="Livros disponíveis no catálogo">
+            <p class="book-search-status"></p>
+          </div>
+          <div id="selectedBook" class="selected-book" hidden>
+            <span id="selectedBookCover"></span>
+            <span id="selectedBookLabel"></span>
+            <button id="changeBook" class="change-book-button" type="button">Trocar livro</button>
+          </div>
+          <select id="bookSelect" name="bookId" aria-hidden="true" tabindex="-1">
+            <option value="">Selecione um livro</option>
+          </select>
+
+          <div id="reviewEditor" hidden>
+            <fieldset class="rating-field">
+              <legend class="field-label">Sua avaliação</legend>
+              <div class="rating-picker" role="radiogroup" aria-label="Escolha uma nota de 1 a 5 estrelas">
+                <input type="radio" name="rating" id="rating-5" value="5" required>
+                <label for="rating-5" aria-label="5 estrelas" title="5 estrelas">★</label>
+                <input type="radio" name="rating" id="rating-4" value="4">
+                <label for="rating-4" aria-label="4 estrelas" title="4 estrelas">★</label>
+                <input type="radio" name="rating" id="rating-3" value="3">
+                <label for="rating-3" aria-label="3 estrelas" title="3 estrelas">★</label>
+                <input type="radio" name="rating" id="rating-2" value="2">
+                <label for="rating-2" aria-label="2 estrelas" title="2 estrelas">★</label>
+                <input type="radio" name="rating" id="rating-1" value="1">
+                <label for="rating-1" aria-label="1 estrela" title="1 estrela">★</label>
+                <span id="ratingHint" class="rating-hint">Selecione de 1 a 5</span>
+              </div>
+            </fieldset>
+
+            <label class="field-label" for="reviewTitle">Título da avaliação</label>
+            <input id="reviewTitle" name="tituloResenha" type="text" maxlength="120" required placeholder="Dê um título à sua opinião">
+
+            <label class="field-label" for="reviewText">Sua opinião</label>
+            <textarea id="reviewText" name="text" rows="6" maxlength="5000" required placeholder="O que você achou da história, dos personagens ou da escrita?"></textarea>
+            <div class="form-meta"><span id="characterCount">0/5000</span><span>Escreva entre 1 e 5.000 caracteres</span></div>
+
+            <label class="spoiler-choice" for="spoilerCheck">
+              <input id="spoilerCheck" type="checkbox" name="containsSpoilers">
+              <span class="custom-check" aria-hidden="true"></span>
+              <span>Esta avaliação contém spoilers</span>
+            </label>
+
+            <div class="form-actions">
+              <button class="publish-button" id="submitReview" type="submit">Publicar avaliação <span aria-hidden="true">→</span></button>
+              <button class="cancel-button" id="cancelEdit" type="button" hidden>Cancelar edição</button>
+            </div>
+          </div>
+          <p id="authHint" class="auth-hint" hidden>Entre na sua conta para publicar e gerenciar suas avaliações.</p>
+          <p id="formMessage" class="form-message" role="status" aria-live="polite" hidden></p>
+        </form>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="reviews-footer">
+    <a class="footer-brand" href="index.html">bookverse</a>
+    <span>Boas histórias aproximam pessoas.</span>
+  </footer>
+
+  <dialog id="reviewDetailDialog" class="review-detail-dialog" aria-labelledby="reviewDetailTitle">
+    <div class="review-detail-shell">
+      <button class="review-detail-close" type="button" aria-label="Fechar detalhes">×</button>
+      <div id="reviewDetailContent"></div>
+    </div>
+  </dialog>
+
+  <script src="reviews.js"></script>
+</body>
+</html>

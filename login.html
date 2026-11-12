@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrar | BookVerse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="BookVerse - página inicial">
+      <svg class="brand-icon" viewBox="0 0 48 42" aria-hidden="true">
+        <path d="M3 5.5C10.4 2.1 17.4 3 23 7v31c-5.6-4-12.6-4.9-20-1.5V5.5Z"/>
+        <path d="M45 5.5C37.6 2.1 30.6 3 25 7v31c5.6-4 12.6-4.9 20-1.5V5.5Z"/>
+      </svg>
+      <span>bookverse</span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html#inicio">Descobrir</a>
+      <a href="index.html#livros">Livros</a>
+      <a href="reviews.html">Resenhas</a>
+      <a href="index.html#listas">Listas</a>
+      <a href="index.html#comunidade">Comunidade</a>
+    </nav>
+
+    <div class="header-actions">
+      <label class="search-box">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg>
+        <input id="siteSearch" type="search" placeholder="Livros, pessoas e listas" aria-label="Buscar livros, pessoas e listas">
+      </label>
+      <a class="login-link" href="login.html">Entrar</a>
+      <a class="button button-small" href="cadastro.html">Criar conta</a>
+    </div>
+  </header>
+
+  <main class="auth-page">
+    <div class="auth-intro">
+      <div class="eyebrow"><span></span> BEM-VINDO DE VOLTA</div>
+      <h1>Continue de onde<br class="desktop-break"> você parou.</h1>
+      <p>Entre para registrar leituras, cadastrar livros e conversar com quem sente as histórias como você.</p>
+    </div>
+
+    <section class="auth-card" aria-labelledby="titulo-card">
+      <h2 id="titulo-card">Entrar na conta</h2>
+
+      <form id="form-login" novalidate>
+        <div class="field">
+          <label class="field-label" for="email">E-mail</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="voce@email.com" required>
+          <p class="field-error" data-erro="email" role="alert"></p>
+        </div>
+
+        <div class="field">
+          <div class="label-row">
+            <label class="field-label" for="senha">Senha</label>
+            <a class="link-small" href="esqueci_senha.html">Esqueci minha senha</a>
+          </div>
+          <div class="password-wrap">
+            <input id="senha" name="senha" type="password" autocomplete="current-password" required>
+            <button type="button" class="toggle-password" data-alvo="senha" aria-label="Mostrar senha" aria-pressed="false">Mostrar</button>
+          </div>
+          <p class="field-error" data-erro="senha" role="alert"></p>
+        </div>
+
+        <button type="submit" id="btn-entrar" class="button button-primary">Entrar</button>
+        <p id="mensagem" class="form-message" role="status"></p>
+      </form>
+
+      <div class="auth-divider"><span>Ainda não tem conta?</span></div>
+      <a class="button button-secondary" href="cadastro.html">Criar conta</a>
+    </section>
+  </main>
+
+  <footer>
+    <span class="footer-brand">bookverse</span>
+    <span>Boas histórias aproximam pessoas.</span>
+  </footer>
+
+  <script src="auth_comum.js"></script>
+  <script src="login.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
